@@ -53,6 +53,15 @@ double leaveOneOutCrossValidation(const vector<vector<double>>& data) {
     return static_cast<double>(correctlyClassified) / totalInstances;
 }
 
+void forwardSelection(data){
+    
+}
+
+
+void backwardElimination(data){
+    
+}
+
 
 
 
@@ -79,12 +88,28 @@ vector<vector<double>> loadData(const string& filename) {
 }
 
 int main() {
+    int choice;
     string filename = "/Users/randypham/Downloads/CS170_Small_Data__97.txt"; 
     vector<vector<double>> data = loadData(filename);
+    
 
     if (data.empty()) {
         cerr << "Error!!! Failed to load data!" << endl;
         return 1;
+    }
+    
+    cout << "Choose Feature Selection Algorithm:\n";
+    cout << "1 - Forward Selection\n";
+    cout << "2 - Backward Elimination\n";
+    cout << "Enter choice: ";
+    cin >> choice;
+
+    if (choice == 1) {
+        forwardSelection(data);
+    } else if (choice == 2) {
+        backwardElimination(data);
+    } else {
+        cout << "Invalid choice!" << endl;
     }
 
     return 0;
