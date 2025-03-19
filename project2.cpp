@@ -53,15 +53,6 @@ double leaveOneOutCrossValidation(const vector<vector<double>>& data) {
     return static_cast<double>(correctlyClassified) / totalInstances;
 }
 
-void forwardSelection(data){
-    
-}
-
-
-void backwardElimination(data){
-    
-}
-
 
 
 
@@ -89,27 +80,36 @@ vector<vector<double>> loadData(const string& filename) {
 
 int main() {
     int choice;
-    string filename = "/Users/randypham/Downloads/CS170_Small_Data__97.txt"; 
-    vector<vector<double>> data = loadData(filename);
+    string filename;
+    vector<vector<double>> data;
     
+    cout << "Welcome to Randy Phams Feature Selection Algorithm.\n";
+    cout << "Type in the name of the file to test: ";
+    getline(cin, filename);
 
+    // Load data from userinput
+    data = loadData(filename);
     if (data.empty()) {
         cerr << "Error!!! Failed to load data!" << endl;
         return 1;
     }
-    
-    cout << "Choose Feature Selection Algorithm:\n";
-    cout << "1 - Forward Selection\n";
-    cout << "2 - Backward Elimination\n";
+
+    cout << "Type the number of the algorithm you want to run.\n";
+    cout << "1) Forward Selection\n";
+    cout << "2) Backward Elimination\n";
     cout << "Enter choice: ";
     cin >> choice;
 
-    if (choice == 1) {
-        forwardSelection(data);
-    } else if (choice == 2) {
-        backwardElimination(data);
-    } else {
-        cout << "Invalid choice!" << endl;
+    switch(choice) {
+        case 1:
+            forwardSelection(data);
+            break;
+        case 2:
+            backwardElimination(data);
+            break;
+        default:
+            cout << "Invalid choice!" << endl;
+            break;
     }
 
     return 0;
