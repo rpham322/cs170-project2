@@ -1,1 +1,1 @@
-# cs170-project2
+# Eight Tile Puzzle Solver
